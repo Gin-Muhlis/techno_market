@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -12,6 +13,9 @@ use App\Http\Controllers\KetentuanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DetailPenjualanController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\TransaksiPenjualanController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +50,9 @@ Route::prefix('/')
         Route::resource('penjualans', PenjualanController::class);
         Route::resource('produks', ProdukController::class);
         Route::resource('users', UserController::class);
+
+        route::resource('transaksi-penjualan', TransaksiPenjualanController::class);
+        Route::get('laporan-penjualan', [LaporanController::class, 'laporanPenjualan'])->name('laporan.penjualan');
+
+        Route::get('export-penjualan',[ExportController::class, 'exportPenjualan'])->name('export.penjualan');
     });

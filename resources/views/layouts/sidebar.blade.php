@@ -62,22 +62,73 @@
                             </a>
                         </li>
                     @endcan
-                    @can('view-any', App\Models\Penjualan::class)
+                    @if (Auth::user()->hasRole('operator'))
                         <li class="nav-item">
-                            <a href="{{ route('penjualans.index') }}" class="nav-link">
-                                <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                <p>Penjualan</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon icon ion-md-key"></i>
+                                <p>
+                                    Transaksi
+                                    <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                @can('view-any', App\Models\Penjualan::class)
+                                    <li class="nav-item">
+                                        <a href="{{ route('transaksi-penjualan.create') }}" class="nav-link">
+                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                            <p>Transaksi Penjualan</p>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('view-any', App\Models\Penjualan::class)
+                                    <li class="nav-item">
+                                        <a href="{{ route('transaksi-penjualan.index') }}" class="nav-link">
+                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                            <p>Data Penjualan</p>
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
                         </li>
-                    @endcan
-                    @can('view-any', App\Models\DetailPenjualan::class)
                         <li class="nav-item">
-                            <a href="{{ route('detail-penjualans.index') }}" class="nav-link">
-                                <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                <p>Detail Penjualan</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon icon ion-md-key"></i>
+                                <p>
+                                    Laporan
+                                    <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                @can('view-any', App\Models\Penjualan::class)
+                                    <li class="nav-item">
+                                        <a href="{{ route('laporan.penjualan') }}" class="nav-link">
+                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                            <p>Laporan Penjualan</p>
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
                         </li>
-                    @endcan
+                    @endif
+
+                    @if (Auth::user()->hasRole('super-admin'))
+                        @can('view-any', App\Models\Penjualan::class)
+                            <li class="nav-item">
+                                <a href="{{ route('penjualans.index') }}" class="nav-link">
+                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                    <p>Penjualan</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('view-any', App\Models\DetailPenjualan::class)
+                            <li class="nav-item">
+                                <a href="{{ route('detail-penjualans.index') }}" class="nav-link">
+                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                    <p>Detail Penjualan</p>
+                                </a>
+                            </li>
+                        @endcan
+                    @endif
                     @can('view-any', App\Models\User::class)
                         <li class="nav-item">
                             <a href="{{ route('users.index') }}" class="nav-link">

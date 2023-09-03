@@ -18,14 +18,9 @@ class KontakController extends Controller
     {
         $this->authorize('view-any', Kontak::class);
 
-        $search = $request->get('search', '');
+        $kontaks = Kontak::latest()->get();
 
-        $kontaks = Kontak::search($search)
-            ->latest()
-            ->paginate(5)
-            ->withQueryString();
-
-        return view('app.kontaks.index', compact('kontaks', 'search'));
+        return view('app.kontaks.index', compact('kontaks'));
     }
 
     /**
