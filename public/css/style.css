@@ -1,0 +1,332 @@
+:root {
+    ---bg-color: #000000;
+    --primary-color: #FF0808;
+    --secondary-color: #FF4608;
+    --third-color: #FFFF08;
+    --text-primary-color: #FFFFFF;
+    --text-secondary-color: #FDF5D6; 
+}
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 50px 20px;
+    background-color: var(---bg-color);
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    width: clamp(300px, 100%, 1200px);
+    min-height: 100vh;
+    margin-inline: auto;
+    border: 1px solid #FFFFFF70;
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(25px);
+    --webkit-backdrop-filter: blur(25px);
+    min-height: 100vh;
+    color: var(--text-primary-color);
+    border-radius: 10px;
+    z-index: 99;
+}
+
+
+/* .wrapper::before {
+    content: '';
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(250px);
+    position: absolute;
+    left: -150px;
+    top: -150px;
+    background-color: var(--text-primary-color);
+} */
+
+.ball-1 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: linear-gradient(var(--primary-color), var(--third-color));
+    position: absolute;
+    transform: translate(300px, -70px);
+    z-index: 1;
+}
+
+.ball-2 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: linear-gradient(#0000ff, #00ffff);
+    position: absolute;
+    transform: translate(-50px, 450px);
+    z-index: 1;
+}
+
+
+.ball-3 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: linear-gradient( 108.7deg,  rgba(221,22,224,1) 11%, rgba(111,22,190,1) 88.2% );
+    position: absolute;
+    transform: translate(300px, 480px);
+    z-index: 1;
+}
+
+.wrapper-nav {
+    height: 70px;
+}
+
+.navbar-brand {
+    font-family: 'Leckerli One', cursive;
+    color: transparent;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--third-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.3em;
+}
+
+.menu {
+    height: 22px;
+    width: 22px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hamberger-menu {
+    --height: 2px;
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    border-radius: calc(var(--height));
+    position: relative;
+    transform: rotate(0deg);
+    transition: all ease 0.5s;
+    -webkit-border-radius: calc(var(--height));
+    -moz-border-radius: calc(var(--height));
+    -ms-border-radius: calc(var(--height));
+    -o-border-radius: calc(var(--height));
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
+
+.hamberger-menu::before,
+.hamberger-menu::after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    border-radius: inherit;
+    transition: all ease 0.5s;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    -ms-border-radius: inherit;
+    -o-border-radius: inherit;
+}
+
+.hamberger-menu::before {
+    top: -5px;
+    left: 0;
+    transform-origin: left;
+}
+
+.hamberger-menu::after {
+    bottom: -5px;
+    right: 0;
+    transform-origin: right;
+}
+
+.open {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+}
+
+.open::before {
+    top: 0;
+    transform: translateX(100%) rotate(-90deg);
+    -webkit-transform: translateX(100%) rotate(-90deg);
+    -moz-transform: translateX(100%) rotate(-90deg);
+    -ms-transform: translateX(100%) rotate(-90deg);
+    -o-transform: translateX(100%) rotate(-90deg);
+}
+
+.open::after {
+    bottom: 0;
+    transform: translateX(-100%) rotate(-90deg);
+}
+
+.wrapper-nav .list-menu {
+    position: absolute;
+    height: 0;
+    top: 70px;
+    left: 0;
+    overflow: hidden;
+    transition: .7s;
+}
+
+.wrapper-nav .list-menu.show {
+    height: 250px;
+}
+
+.wrapper-nav ul {
+    list-style: none;
+    padding: 0;
+    font-size: .9em;
+    font-family: 'Poppins', sans-serif;
+}
+    
+.wrapper-nav ul li a {
+    color: var(--text-primary-color);
+    padding-bottom: 7px;
+    position: relative;
+    
+}
+
+.wrapper-nav ul li a::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary-color);
+    border-radius: 3px;
+    transition: .7s;
+}
+
+.wrapper-nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+
+.welcome-text {
+    color: #FFFFFF80;
+    font-size: .9em;
+}
+
+.title-hero {
+    font-size: 4.5em;
+    font-family: 'Leckerli One', cursive;
+    color: transparent;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--third-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-hero.techno {
+    z-index: 1;
+}
+
+.title-hero.market {
+    margin-top: -30px;
+    margin-inline-start: 40px;
+    z-index: 3;
+}
+
+.class-text {
+    font-size: lem;
+}
+
+.text-food {
+    font-size: lem;
+    color: var(--third-color);
+}
+
+.link-to-menu {
+    color: var(--text-primary-color);
+    background-color: var(--primary-color);
+    font-size: .9em;
+    border-radius: 20px;
+    transition: .7s;
+    padding: 7px 32px;
+}
+
+.link-to-menu:hover {
+    transform: scale(.95);
+}
+
+.hero-image {
+    width: 320px;
+}
+
+/* HERO RESPONSIVE BREAKPOINTS */
+@media screen and (min-width: 500px) {
+    .navbar-brand {
+        font-size: 1.5em;
+    }   
+    .title-hero {
+        font-size: 5em;
+    }
+
+    .hero-image {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5em;
+    }   
+    .title-hero {
+        font-size: 6em;
+    }
+
+    .hero-image {
+        width: 500px;
+    }
+    .colomn {
+        height: 100%;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .wrapper-nav .list-menu {
+        position: relative;
+        top: 0;
+        width: auto;
+        height: 100%;
+    }
+
+
+}
+
+@media screen and (min-width: 992px) {
+    .welcome-text {
+        font-size: 1em;
+    }
+    .navbar-brand {
+        font-size: 1.7em;
+    }   
+    .title-hero {
+        font-size: 7em;
+    }
+    .title-hero.market {
+        margin-top: -55px;
+        margin-left: 60px;
+    }
+
+    .class-text,
+    .text-food {
+        font-size: 1.2em;
+    }
+
+    .content-hero .colomn {
+        height: calc(100vh - 100px);
+    }
+
+}
