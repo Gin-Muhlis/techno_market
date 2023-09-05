@@ -1,3 +1,7 @@
+@php
+    require_once app_path() . '/Helpers/helper.php';
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -63,7 +67,7 @@
                         <tr>
                             <td>{{ $kontak->nama ?? '-' }}</td>
                             <td>{{ $kontak->pesan ?? '-' }}</td>
-                            <td>{{ $kontak->tanggal ?? '-' }}</td>
+                            <td>{{ $kontak->tanggal ? generateDate($kontak->tanggal->toDateString()) : '-' }}</td>
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"

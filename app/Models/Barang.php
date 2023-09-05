@@ -19,6 +19,7 @@ class Barang extends Model
         'tersedia',
         'user_id',
         'produk_id',
+        'gambar',
     ];
 
     protected $searchableFields = ['*'];

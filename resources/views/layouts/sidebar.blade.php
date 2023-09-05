@@ -72,25 +72,25 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('view-any', App\Models\Penjualan::class)
+                                {{-- @can('view-any', App\Models\Penjualan::class)
                                     <li class="nav-item">
                                         <a href="{{ route('transaksi-penjualan.create') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
                                             <p>Transaksi Penjualan</p>
                                         </a>
                                     </li>
-                                @endcan
+                                @endcan --}}
                                 @can('view-any', App\Models\Penjualan::class)
                                     <li class="nav-item">
                                         <a href="{{ route('transaksi-penjualan.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p>Data Penjualan</p>
+                                            <p>Order</p>
                                         </a>
                                     </li>
                                 @endcan
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon icon ion-md-key"></i>
                                 <p>
@@ -108,7 +108,7 @@
                                     </li>
                                 @endcan
                             </ul>
-                        </li>
+                        </li> --}}
                     @endif
 
                     @if (Auth::user()->hasRole('super-admin'))

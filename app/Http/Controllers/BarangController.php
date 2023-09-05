@@ -7,10 +7,11 @@ use App\Models\Barang;
 use App\Models\Produk;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\BarangStoreRequest;
 use App\Http\Requests\BarangUpdateRequest;
-use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
 {
@@ -55,6 +56,9 @@ class BarangController extends Controller
 
         $validated = $request->validated();
         $validated['user_id'] = $user->id;
+        if ($request->hasFile('gambar')) {
+            $validated['gambar'] = $request->file('gambar')->store('public');
+        }
 
         $barang = Barang::create($validated);
 
@@ -99,6 +103,15 @@ class BarangController extends Controller
 
         $validated = $request->validated();
         $validated['user_id'] = $user->id;
+
+        if ($request->hasFile('gambar')) {
+            if ($barang->gambar) {
+                Storage::delete($barang->gambar);
+            }
+
+            $validated['gambar'] = $request->file('gambar')->store('public');
+        }
+
         $barang->update($validated);
 
         return redirect()

@@ -37,6 +37,7 @@ return [
             'tersedia' => 'Tersedia',
             'user_id' => 'User',
             'produk_id' => 'Produk',
+            'gambar' => 'Gambar',
         ],
     ],
 

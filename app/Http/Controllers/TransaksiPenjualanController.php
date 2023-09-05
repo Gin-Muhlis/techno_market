@@ -28,8 +28,8 @@ class TransaksiPenjualanController extends Controller
         if (!is_null($tanggal_awal) && !is_null($tanggal_akhir)) {
             $data_penjualan = Penjualan::with(['detailPenjualans', 'user', 'pelanggan'])->whereBetween('tanggal_faktur', [$tanggal_awal, $tanggal_akhir])->get();
         }
-
-        return view('app.transaksi.index', compact('data_penjualan', 'sekarang', 'tanggal_awal', 'tanggal_akhir'));
+        
+        return view('app.transaksi.order', compact('data_penjualan', 'sekarang', 'tanggal_awal', 'tanggal_akhir'));
     }
 
     public function create() {

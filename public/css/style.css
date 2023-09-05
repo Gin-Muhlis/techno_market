@@ -1,38 +1,37 @@
 :root {
     ---bg-color: #000000;
-    --primary-color: #FF0808;
-    --secondary-color: #FF4608;
-    --third-color: #FFFF08;
-    --text-primary-color: #FFFFFF;
-    --text-secondary-color: #FDF5D6; 
+    --primary-color: #ff0808;
+    --secondary-color: #ff4608;
+    --third-color: #ffff08;
+    --text-primary-color: #ffffff;
+    --text-secondary-color: #fdf5d6;
 }
 
 html {
-
     scroll-behavior: smooth;
 }
 
 body {
+    font-family: "Poppins", sans-serif;
+}
+
+.parent {
     padding: 50px 20px;
     background-color: var(---bg-color);
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
 }
 
 .wrapper {
     width: clamp(300px, 100%, 1200px);
-    min-height: 100vh;
     margin-inline: auto;
-    border: 1px solid #FFFFFF70;
-    background-color: rgba(255, 255, 255, .1);
+    border: 1px solid #ffffff70;
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
     --webkit-backdrop-filter: blur(25px);
-    min-height: 100vh;
+    /* min-height: 100vh; */
     color: var(--text-primary-color);
     border-radius: 10px;
     z-index: 99;
 }
-
 
 /* .wrapper::before {
     content: '';
@@ -52,7 +51,8 @@ body {
     border-radius: 50%;
     background-image: linear-gradient(var(--primary-color), var(--third-color));
     position: absolute;
-    transform: translate(300px, -70px);
+    right: -10px;
+    top: -10px;
     z-index: 1;
 }
 
@@ -62,19 +62,94 @@ body {
     border-radius: 50%;
     background-image: linear-gradient(#0000ff, #00ffff);
     position: absolute;
-    transform: translate(-50px, 450px);
+    left: -10px;
+    top: 300px;
     z-index: 1;
 }
-
 
 .ball-3 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    background-image: linear-gradient(
+        108.7deg,
+        rgba(221, 22, 224, 1) 11%,
+        rgba(111, 22, 190, 1) 88.2%
+    );
+    position: absolute;
+    right: -10px;
+    top: 500px;
+    z-index: 1;
+}
+
+.ball-4 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     background-image: linear-gradient( 108.7deg,  rgba(221,22,224,1) 11%, rgba(111,22,190,1) 88.2% );
     position: absolute;
-    transform: translate(300px, 480px);
+    left: -70px;
+    top: 700px;
     z-index: 1;
+}
+
+.ball-5 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: radial-gradient( circle 325px at 19.2% 64.8%,  rgba(254,62,101,1) 9.7%, rgba(166,24,146,1) 91.3% );
+    position: absolute;
+    left: 250px;
+    top: 950px;
+    z-index: 1;
+}
+
+.ball-6 {
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+    position: absolute;
+    right: -20px;
+    top: 1200px;
+    z-index: 1;
+}
+
+.ball-7 {
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: linear-gradient( 122.9deg,  rgba(147,223,74,1) 12.1%, rgba(167,237,104,1) 37.6%, rgba(217,238,150,1) 64.4% );
+    position: absolute;
+    left: -20px;
+    bottom: 100px;
+    z-index: 1;
+}
+
+/* BALL RESPONSIVE */
+@media screen and (min-width: 768px) {
+    .ball-1 {
+        right: 20px;
+        top: 50px;
+    }
+    .ball-2 {
+        left: 30px;
+    }
+    .ball-3 {
+        right: 40px;
+    }
+    .ball-4 {
+        left: 10px;
+    }
+    .ball-5 {
+        left: 800px;
+    }
+    .ball-6 {
+        right: 30px;
+    }
+    .ball-7  {
+        left: 20px;
+    }
 }
 
 .wrapper-nav {
@@ -82,13 +157,19 @@ body {
 }
 
 .navbar-brand {
-    font-family: 'Leckerli One', cursive;
+    font-family: "Leckerli One", cursive;
     color: transparent;
-    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--third-color));
+    background-image: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--secondary-color),
+        var(--third-color)
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.3em;
+    /* text-shadow: 0px 0px 10px #ffff0830, 0px 0px 15px #ff080830; */
 }
 
 .menu {
@@ -175,55 +256,66 @@ body {
     top: 70px;
     left: 0;
     overflow: hidden;
-    transition: .7s;
+    transition: 0.7s;
+    
+    width: 100%;
 }
 
 .wrapper-nav .list-menu.show {
     height: 250px;
+    z-index: 999;
+    border: 1px solid transparent;
+    border-bottom-color: #ffffff70;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(500px);
+    --webkit-backdrop-filter: blur(500px);
 }
 
 .wrapper-nav ul {
     list-style: none;
     padding: 0;
-    font-size: .9em;
-    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    font-family: "Poppins", sans-serif;
 }
-    
+
 .wrapper-nav ul li a {
     color: var(--text-primary-color);
     padding-bottom: 7px;
     position: relative;
-    
 }
 
 .wrapper-nav ul li a::after {
-    content: '';
+    content: "";
     width: 100%;
     height: 2px;
     background-color: var(--text-primary-color);
     border-radius: 3px;
-    transition: .7s;
+    transition: 0.7s;
 }
 
 .wrapper-nav ul li a:hover::after {
     width: 100%;
 }
 
-
-
 .welcome-text {
-    color: #FFFFFF80;
-    font-size: .9em;
+    color: #ffffff80;
+    font-size: 0.9em;
 }
 
 .title-hero {
     font-size: 4.5em;
-    font-family: 'Leckerli One', cursive;
+    font-family: "Leckerli One", cursive;
     color: transparent;
-    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--third-color));
+    background-image: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--secondary-color),
+        var(--third-color)
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px #ffff0830, 0px 0px 15px #ff080830;
 }
 
 .title-hero.techno {
@@ -248,25 +340,27 @@ body {
 .link-to-menu {
     color: var(--text-primary-color);
     background-color: var(--primary-color);
-    font-size: .9em;
+    font-size: 0.9em;
     border-radius: 20px;
-    transition: .7s;
+    transition: 0.7s;
     padding: 7px 32px;
+    box-shadow: 0 0 10px #ff080830, 0 0 15px #ff080830;
 }
 
 .link-to-menu:hover {
-    transform: scale(.95);
+    transform: scale(0.95);
 }
 
 .hero-image {
     width: 320px;
+    filter: drop-shadow(0 0 10px #ff080830);
 }
 
 /* HERO RESPONSIVE BREAKPOINTS */
 @media screen and (min-width: 500px) {
     .navbar-brand {
         font-size: 1.5em;
-    }   
+    }
     .title-hero {
         font-size: 5em;
     }
@@ -279,7 +373,7 @@ body {
 @media screen and (min-width: 768px) {
     .navbar-brand {
         font-size: 1.5em;
-    }   
+    }
     .title-hero {
         font-size: 6em;
     }
@@ -301,8 +395,6 @@ body {
         width: auto;
         height: 100%;
     }
-
-
 }
 
 @media screen and (min-width: 992px) {
@@ -311,7 +403,7 @@ body {
     }
     .navbar-brand {
         font-size: 1.7em;
-    }   
+    }
     .title-hero {
         font-size: 7em;
     }
@@ -328,5 +420,171 @@ body {
     .content-hero .colomn {
         height: calc(100vh - 100px);
     }
+}
 
+/* OFFER */
+.offer {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--text-primary-color);
+    box-shadow: 6px 6px 10px rgba(255, 255, 255, 0.1);
+    font-size: 0.8em;
+}
+
+@media screen and (min-width: 768px) {
+    .offer {
+        font-size: 0.9em;
+    }
+}
+
+/* MENU */
+.title-menu {
+    font-family: "Poppins", sans-serif;
+}
+
+.makanan-title {
+    color: var(--primary-color);
+    font-size: 1em;
+}
+
+.item {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.item::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ffffff50;
+    filter: blur(80px);
+    position: absolute;
+    left: -40px;
+    top: -40px;
+}
+
+.item .image {
+    width: 100px !important;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.detail-makanan .nama {
+    font-size: 1.1em;
+}
+
+.detail-makanan .harga {
+    font-size: 0.9em;
+}
+
+.btn-order {
+    outline: none;
+    border: none;
+    padding: 6px 15px;
+    background-color: var(--primary-color);
+    color: var(--text-primary-color);
+    font-size: 0.9em;
+}
+
+@media screen and (min-width: 360px) {
+    .btn-order {
+        padding: 6px 25px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .makanan-title {
+        font-size: 1.1em;
+    }
+}
+
+.contact {
+    margin-inline: auto;
+    border: 1px solid #00000070;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(25px);
+    --webkit-backdrop-filter: blur(25px);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::after {
+    content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ffffff50;
+    position: absolute;
+    right: -75px;
+    top: -75px;
+    filter: blur(100px);
+}
+
+.contact form input {
+    outline: none;
+    background: none;
+    padding: 8px;
+    border: 1px solid #ffffff50;
+    font-size: 0.9em;
+    color: var(--text-primary-color);
+}
+
+.contact form input:focus {
+    outline: none;
+    background: none;
+    padding: 8px;
+
+    border: 1px solid #ffffff50;
+    color: var(--text-primary-color);
+}
+
+.contact form textarea {
+    height: 100px;
+    outline: none;
+    background: none;
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ffffff50;
+    color: var(--text-primary-color);
+}
+
+.contact form textarea:focus {
+    outline: none;
+    background: none;
+    padding: 8px;
+    border: 1px solid #ffffff50;
+    color: var(--text-primary-color);
+}
+
+.btn-contact {
+    background-color: var(--primary-color);
+    color: var(--text-primary-color);
+    font-size: 0.9em;
+}
+
+.modal-body, 
+.modal-body input {
+    font-size: .9em;
+}
+
+.modal-body #produk {
+    pointer-events: none;
+}
+
+.group-input label::after {
+    content: "*";
+    color: var(--primary-color);
+    margin-inline-start: 1px;
+}
+
+.owl-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    gap: 15px;
+    color: var(--text-primary-color);
 }

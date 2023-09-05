@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->boolean('tersedia');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('produk_id');
+            $table->string('gambar')->nullable();
 
             $table->timestamps();
         });

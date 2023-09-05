@@ -26,6 +26,7 @@ class BarangStoreRequest extends FormRequest
             'harga_jual' => ['required', 'numeric'],
             'tersedia' => ['required', 'boolean'],
             'produk_id' => ['required', 'exists:produks,id'],
+            'gambar' => ['image', 'max:1024', 'nullable'],
         ];
     }
 }

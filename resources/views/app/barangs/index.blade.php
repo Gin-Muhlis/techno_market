@@ -46,6 +46,9 @@
                                 <th class="text-left">
                                     @lang('crud.barang.inputs.produk_id')
                                 </th>
+                                <th class="text-left">
+                                   Gambar
+                                </th>
                                 <th class="text-center">
                                     @lang('crud.common.actions')
                                 </th>
@@ -62,6 +65,10 @@
                                     <td>{{ optional($barang->user)->name ?? '-' }}</td>
                                     <td>
                                         {{ optional($barang->produk)->nama_produk ?? '-' }}
+                                    </td>
+                                    <td>
+                                        <x-partials.thumbnail
+                                            src="{{ $barang->gambar ? \Storage::url($barang->gambar) : '' }}" />
                                     </td>
                                     <td class="text-center" style="width: 134px;">
                                         <div role="group" aria-label="Row Actions" class="btn-group">

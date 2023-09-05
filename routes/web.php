@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\LaporanController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\UsersEndController;
 use App\Http\Controllers\KetentuanController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DetailPenjualanController;
-use App\Http\Controllers\ExportController;
 use App\Http\Controllers\TransaksiPenjualanController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UsersEndController::class, 'index']);
 
-Auth::routes();
+Route::prefix('super/admin')->group(function() {
+    Auth::routes();
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -56,3 +57,6 @@ Route::prefix('/')
 
         Route::get('export-penjualan',[ExportController::class, 'exportPenjualan'])->name('export.penjualan');
     });
+
+Route::post('contact', [UsersEndController::class, 'contact'])->name('contact.sent');
+Route::post('order', [UsersEndController::class, 'order'])->name('order.make');

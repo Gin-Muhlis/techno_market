@@ -16,6 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
         <script src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
         
+        
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -76,14 +77,16 @@
         {{-- sweat alert --}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        {{-- carousel --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
         @stack('scripts')
         
         <script>
             let table = new DataTable('#myTable');
         </script>
         
-        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-        
+      
         @if (session()->has('success')) 
         <script>
             var notyf = new Notyf({dismissible: true})
